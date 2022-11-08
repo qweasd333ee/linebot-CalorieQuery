@@ -12,7 +12,6 @@ const bot = linebot({
 })
 
 bot.on('message', event => {
-  if (event.message.type !== 'text') return
   if (event.message.type === 'text') {
     fetchFood(event)
   }
