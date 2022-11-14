@@ -3,6 +3,7 @@ import 'dotenv/config'
 // 引用 linebot
 import linebot from 'linebot'
 import fetchFood from './commands/fetchFood.js'
+import fetchTDEE from './commands/fetchTDEE.js'
 
 // 設定 linebot
 const bot = linebot({
@@ -12,8 +13,10 @@ const bot = linebot({
 })
 
 bot.on('message', event => {
-  if (event.message.type === 'text') {
+  if (event.message.text.slice(0, 4) === '查熱量 ') {
     fetchFood(event)
+  } else if (event.message.type === 'text') {
+    // fetchTDEE(event)
   }
 })
 

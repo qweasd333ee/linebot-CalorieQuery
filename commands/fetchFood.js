@@ -27,7 +27,7 @@ export default async (event) => {
       responseType: 'stream'
     })
     const json = await readJSONfromZip(response.data)
-    const text = event.message.text
+    const text = event.message.text.substring(4)
     const heats = []
     for (let i = 0; i < json.length; i++) {
       const foodName = json[i]['樣品名稱']
@@ -54,8 +54,6 @@ export default async (event) => {
     }
     event.reply(reply)
     writejson(reply, 'heats')
-    console.log(reply)
-    // console.log(heats)
   } catch (error) {
     event.reply('發生錯誤')
   }
