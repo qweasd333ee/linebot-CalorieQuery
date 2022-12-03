@@ -1,7 +1,10 @@
+import health from '../templates/TDEE.js'
+import writejson from '../utils/writejson.js'
+
 export default (event) => {
-  const data = []
-  const text = event.message.text
+  const text = event.message.text.substring(4)
   const info = text.split(' ')
+  const data = []
   const age = info[0]
   const cm = info[1]
   const kg = info[2]
@@ -18,13 +21,25 @@ export default (event) => {
   } else if (info[4] === 'E') {
     exercise = '1.9'
   }
-  if (event.message.type === 'text' && text !== '個人資料') {
+  if (event.message.type === 'text') {
     const BMR = Math.round((9.99 * kg) + (6.25 * cm) - (4.92 * age) + ((166 * gender) - 161))
     const TDEE = Math.round(BMR * exercise)
-    data.push(age, cm, kg, gender, exercise)
-    console.log(data)
-    console.log(TDEE)
-  } else if (text === '個人資料') {
-    console.log(data)
+    const bubble = JSON.parse(JSON.stringify(health))
+    bubble.body.contents[1].contents[0].contents[1].text = `${BMR}`
+    bubble.body.contents[3].contents[0].contents[1].text = `${TDEE}`
+    data.push(bubble)
+    console.log(bubble)
+  } else {
+    console.log('輸入格式錯誤，請確認後重新輸入。')
   }
+  const reply1 = {
+    type: 'flex',
+    altText: 'BMR、TDEE查詢結果',
+    contents: {
+      type: 'carousel',
+      contents: data
+    }
+  }
+  event.reply(reply1)
+  writejson(reply1, 'data')
 }

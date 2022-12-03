@@ -33,18 +33,20 @@ export default async (event) => {
       const foodName = json[i]['樣品名稱']
       const analyze = json[i]['分析項']
       const Kcal = json[i]['每100克含量']
-      if (text === foodName && analyze === '修正熱量') {
-        const bubble = JSON.parse(JSON.stringify(heat))
-        // 修改名稱
-        bubble.body.contents[0].text = foodName
-        // 修改熱量數值
-        bubble.body.contents[1].contents[0].contents[1].text = Kcal
-        // 傳入陣列
-        heats.push(bubble)
-        // console.log(bubble)
+      if (analyze === '修正熱量') {
+        if (text === foodName) {
+          // console.log(json[i]['樣品名稱'])
+          const bubble = JSON.parse(JSON.stringify(heat))
+          // 修改名稱
+          bubble.body.contents[0].text = foodName
+          // 修改熱量數值
+          bubble.body.contents[1].contents[0].contents[1].text = Kcal
+          // 傳入陣列
+          heats.push(bubble)
+        }
       }
     }
-    const reply = {
+    const reply2 = {
       type: 'flex',
       altText: '食品熱量查詢結果',
       contents: {
@@ -52,8 +54,8 @@ export default async (event) => {
         contents: heats
       }
     }
-    event.reply(reply)
-    writejson(reply, 'heats')
+    event.reply(reply2)
+    writejson(reply2, 'heats')
   } catch (error) {
     event.reply('發生錯誤')
   }
