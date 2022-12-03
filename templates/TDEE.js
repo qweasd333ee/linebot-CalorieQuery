@@ -2,7 +2,7 @@ export default {
   type: 'bubble',
   hero: {
     type: 'image',
-    url: 'https://raw.githubusercontent.com/qweasd333ee/linebot-demo/master/images/TDEE.jpeg',
+    url: 'https://raw.githubusercontent.com/qweasd333ee/linebot-demo/master/images/heats.jpeg',
     size: 'full',
     aspectRatio: '20:13',
     aspectMode: 'cover',

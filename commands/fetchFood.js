@@ -33,9 +33,10 @@ export default async (event) => {
       const foodName = json[i]['樣品名稱']
       const analyze = json[i]['分析項']
       const Kcal = json[i]['每100克含量']
+      // 如果分析項為修正熱量
       if (analyze === '修正熱量') {
-        if (text === foodName) {
-          // console.log(json[i]['樣品名稱'])
+        // 如果 foodName 包含 line 打的字
+        if (foodName.includes(text) === true) {
           const bubble = JSON.parse(JSON.stringify(heat))
           // 修改名稱
           bubble.body.contents[0].text = foodName
@@ -43,6 +44,8 @@ export default async (event) => {
           bubble.body.contents[1].contents[0].contents[1].text = Kcal
           // 傳入陣列
           heats.push(bubble)
+        } else {
+          event.reply('搜尋失敗，請確認是否有錯別字')
         }
       }
     }

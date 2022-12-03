@@ -4,6 +4,7 @@ import 'dotenv/config'
 import linebot from 'linebot'
 import fetchFood from './commands/fetchFood.js'
 import fetchTDEE from './commands/fetchTDEE.js'
+import fetchDietarySupplement from './commands/fetchDietarySupplement.js'
 
 // 設定 linebot
 const bot = linebot({
@@ -17,6 +18,8 @@ bot.on('message', event => {
     fetchFood(event)
   } else if (event.message.text.slice(0, 4) === '查消耗 ') {
     fetchTDEE(event)
+  } else if (event.message.text.slice(0, 4) === '查字號 ') {
+    fetchDietarySupplement(event)
   }
 })
 
