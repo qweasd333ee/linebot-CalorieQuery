@@ -1,5 +1,16 @@
 export default {
   type: 'bubble',
+  hero: {
+    type: 'image',
+    url: 'https://raw.githubusercontent.com/qweasd333ee/linebot-demo/master/images/TDEE.jpeg',
+    size: 'full',
+    aspectRatio: '20:13',
+    aspectMode: 'cover',
+    action: {
+      type: 'uri',
+      uri: 'http://linecorp.com/'
+    }
+  },
   body: {
     type: 'box',
     layout: 'vertical',
@@ -26,7 +37,7 @@ export default {
                 type: 'text',
                 text: '每100克',
                 color: '#aaaaaa',
-                size: 'sm',
+                size: 'md',
                 flex: 2,
                 align: 'center'
               },
@@ -35,14 +46,14 @@ export default {
                 text: '100',
                 wrap: true,
                 color: '#666666',
-                size: 'sm',
+                size: 'lg',
                 flex: 3,
                 align: 'center'
               },
               {
                 type: 'text',
                 text: '大卡',
-                size: 'sm',
+                size: 'md',
                 flex: 2,
                 align: 'center',
                 color: '#aaaaaa'

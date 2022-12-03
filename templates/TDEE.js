@@ -2,7 +2,7 @@ export default {
   type: 'bubble',
   hero: {
     type: 'image',
-    url: 'https://cdn0-manfashion.techbang.com/system/images/114456/medium/a4a94d36526a1e08a62af676f4dc2861.jpg?1594883391',
+    url: 'https://raw.githubusercontent.com/qweasd333ee/linebot-demo/master/images/TDEE.jpeg',
     size: 'full',
     aspectRatio: '20:13',
     aspectMode: 'cover',
