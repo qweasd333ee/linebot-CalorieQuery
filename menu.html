@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: 2500px;
+      height: 843px;
+      border-collapse: collapse;
+      font-family: Microsoft JhengHei;
+    }
+
+    table td {
+      text-align: center;
+      padding: 0px;
+    }
+
+    .icon {
+      color: #ffffff;
+      font-size: 280px;
+    }
+
+    .text {
+      margin-top: 10px;
+      color: #ffffff;
+      font-size: 120px;
+      font-weight: bold;
+    }
+
+    #block1 {
+      background-color: #00D084;
+      width: 33.33%;
+    }
+
+    #block2 {
+      background-color: #2D8665;
+      width: 33.33%;
+    }
+
+    #block3 {
+      background-color: #00D084;
+      width: 33.33%;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td id="block1">
+        <i class="fa fa-file-text-o icon"></i>
+        <div class="text">文字</div>
+      </td>
+      <td id="block2">
+        <i class="fa fa-link icon"></i>
+        <div class="text">網址</div>
+      </td>
+      <td id="block3">
+        <i class="fa fa-list icon"></i>
+        <div class="text">選單</div>
+      </td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 10px">
+    <input type="button" id="btn" value="另存圖片" />
+  </div>
+
+  <div id="img"></div>
+  <script>
+    $(function () {
+      $("#btn").click(function () {
+        html2canvas($("table"), {
+          onrendered: function (canvas) {
+            $("#img").append(canvas);
+            $('#img canvas').css('max-width', '600px');
+          }
+        });
+      });
+    }); 
+  </script>
+</body>
+
+</html>
