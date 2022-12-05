@@ -2,7 +2,7 @@ export default {
   type: 'bubble',
   hero: {
     type: 'image',
-    url: 'https://doqvf81n9htmm.cloudfront.net/data/crop_article/86579/supplement.jpg_1140x855.jpg',
+    url: 'https://raw.githubusercontent.com/qweasd333ee/linebot-demo/master/images/food.jpg',
     size: 'full',
     aspectRatio: '20:13',
     aspectMode: 'cover',
