@@ -60,6 +60,7 @@ export default async (event) => {
     event.reply(reply2)
     writejson(reply2, 'heats')
   } catch (error) {
+    console.error(error)
     event.reply('發生錯誤')
   }
 }
