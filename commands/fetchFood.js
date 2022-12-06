@@ -44,8 +44,6 @@ export default async (event) => {
           bubble.body.contents[1].contents[0].contents[1].text = Kcal
           // 傳入陣列
           heats.push(bubble)
-        } else {
-          event.reply('搜尋失敗，請確認是否有錯別字')
         }
       }
     }
@@ -60,7 +58,6 @@ export default async (event) => {
     event.reply(reply2)
     writejson(reply2, 'heats')
   } catch (error) {
-    console.error(error)
     event.reply('發生錯誤')
   }
 }
